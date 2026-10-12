@@ -98,6 +98,9 @@ class MyLineReg:
 
     def get_coef(self) -> np.ndarray:
         """Returns models coefficients without bias"""
+        if self.weights is None:
+            raise RuntimeError("Trying to get coefficients of not trained model.")
+        return self.weights[1:]
             
 
     def predict(self, X: pd.DataFrame) -> np.ndarray:
